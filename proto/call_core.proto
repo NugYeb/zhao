@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package call_core;
+
+
+service CallCore {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+}
+
+message RegisterRequest {
+  string name = 1;
+  string addr = 2;
+}
+
+message RegisterResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+

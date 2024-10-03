@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package call_extend;
+
+
+
+service CallExtend {
+    rpc Check (CheckRequest) returns (CheckResponse) {}
+    rpc Get (GetRequest) returns (DataMap) {}
+}
+
+message CheckRequest {
+    bool health = 1;
+}
+
+message CheckResponse {
+    bool status = 1;
+}
+
+message GetRequest {
+    sint64 id = 1;
+    string name = 2;
+}
+
+
+message InnerMap{
+    map<string,string> inner_map = 1;
+}
+
+message DataMap{
+    map<string,InnerMap> data_map = 1;
+}

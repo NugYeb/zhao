@@ -1,0 +1,21 @@
+[package]
+name = "common"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+thiserror = { version = "1.0.64" }
+tokio = { workspace = true }
+salvo = { workspace = true }
+sea-orm = { workspace = true }
+serde = { workspace = true }
+dotenvy = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+tracing-appender = { workspace = true }
+anyhow = { workspace = true }
+jsonwebtoken = { workspace = true }
+bcrypt = { workspace = true }
+time = { workspace = true }
+colored = { workspace = true }
+once_cell = { workspace = true }

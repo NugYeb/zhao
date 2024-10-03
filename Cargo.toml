@@ -1,0 +1,83 @@
+[package]
+name = "zew"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "zhao"
+path = "src/main.rs"
+
+[[bin]]
+name = "extend"
+path = "src/extend.rs"
+
+[workspace]
+members = [".", "core/*","migration"]
+
+[workspace.dependencies]
+tokio = { version = "1.40.0", features = ["macros", "rt-multi-thread"] }
+tonic = { version = "0.12.3" }
+tonic-build = { version = "0.12.3" }
+salvo = { version = "0.73.0", features = [
+    "logging",
+    "jwt-auth",
+    "cors",
+    "serve-static",
+] }
+
+sea-orm = { version = "1.0.1", features = [
+    "sqlx-sqlite",
+    "runtime-tokio-native-tls",
+    "macros",
+    "with-chrono",
+    "debug-print",
+] }
+
+dotenvy = { version = "0.15.7" }
+
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18", features = ["json", "chrono"] }
+tracing-appender = { version = "0.2.3" }
+
+anyhow = { version = "1.0.89" }
+thiserror = { version = "1.0.64" }
+
+once_cell = { version = "1.19.0" }
+serde = { version = "1.0.210" }
+serde_json = { version = "1.0.128" }
+jsonwebtoken = { version = "9.3.0" }
+bcrypt = { version = "0.15.1" }
+time = { version = "0.3.36" }
+colored = { version = "2.1.0" }
+prost = { version = "0.13.3" }
+parking_lot = { version = "0.12.3" }
+
+[dependencies]
+mimalloc = { version = "0.1.43", default-features = false }
+prost = { workspace = true }
+tokio = { workspace = true }
+tonic = { workspace = true }
+colored = { workspace = true }
+
+common = { path = "./core/common" }
+api = { path = "./core/api" }
+extend = { path = "./core/extend" }
+
+
+[build-dependencies]
+tonic-build = { workspace = true }
+
+
+[profile.dev]
+opt-level = 1 # 1级优化
+
+[profile.dev.package."*"]
+opt-level = 3 # 3级优化依赖
+
+[profile.release]
+codegen-units = 1
+debug = false
+lto = "fat"
+opt-level = 3
+# painc = "abort"
+# strip = "symbols"

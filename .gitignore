@@ -1,0 +1,5 @@
+/target
+/logs
+/data
+node_modules
+dist
