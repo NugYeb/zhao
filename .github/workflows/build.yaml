@@ -57,6 +57,24 @@ jobs:
       #     # Make Rust compile to our target (defined in the matrix)
       #     targets: ${{ matrix.target }}
 
+      - name: Install dependencies (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libssl-dev
+
+      - name: Install dependencies (macOS)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install openssl
+
+      # - name: Set environment variables
+      #   run: |
+      #     echo "OPENSSL_DIR=/usr/local/opt/openssl" >> $GITHUB_ENV
+      #     echo "PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig" >> $GITHUB_ENV
+      #     echo "OPENSSL_LIB_DIR=/usr/local/opt/openssl/lib" >> $GITHUB_ENV
+      #     echo "OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include" >> $GITHUB_ENV
+
       - name: Install Rust
         uses: actions-rs/toolchain@v1
         with:
