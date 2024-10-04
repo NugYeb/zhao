@@ -61,7 +61,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libssl-dev
+          sudo apt-get install -y libssl-dev openssl
 
       - name: Install dependencies (macOS)
         if: matrix.os == 'macos-latest'
