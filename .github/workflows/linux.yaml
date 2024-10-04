@@ -25,11 +25,10 @@ jobs:
 
       - name: Install dependencies (Linux)
         if: matrix.os == 'ubuntu-latest'
-        with:
-          run: |
-            sudo apt update
-            sudo apt install -y libssl-dev
-            sudo apt install -y protoc
+        run: |
+          sudo apt update
+          sudo apt install -y libssl-dev
+          sudo apt install -y protoc
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
