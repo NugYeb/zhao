@@ -30,7 +30,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt update
-          sudo apt install -y libssl-dev
+          sudo apt install -y libssl-dev pkg-config openssl
       
       - name: Install Protoc
         uses: arduino/setup-protoc@v3
