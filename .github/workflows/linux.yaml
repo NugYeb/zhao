@@ -28,7 +28,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y libssl-dev
-          sudo apt install -y protoc
+          sudo apt install -y protobuf
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
