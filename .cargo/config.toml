@@ -3,43 +3,46 @@ linker = "rust-lld.exe"
 # cargo install -f cargo-binutils
 # rustup component add llvm-tools-preview
 
-[build]
+[target.x86_64-pc-windows-msvc.build]
 rustflags = ["-C", "target-feature=+crt-static"]
 jobs = 1
 
+[target.x86_64-unknown-linux-gnu.build]
+jobs = 1
 
-[source.crates-io]
-registry = "https://github.com/rust-lang/crates.io-index"
 
-replace-with = 'rsproxy'
-# 中国科学技术大学
-# replace-with = 'ustc'
+# [source.crates-io]
+# registry = "https://github.com/rust-lang/crates.io-index"
 
-# rsproxy
-[source.rsproxy]
-registry = "https://rsproxy.cn/crates.io-index"
+# replace-with = 'rsproxy'
+# # 中国科学技术大学
+# # replace-with = 'ustc'
 
-[source.rsproxy-sparse]
-registry = "sparse+https://rsproxy.cn/index"
+# # rsproxy
+# [source.rsproxy]
+# registry = "https://rsproxy.cn/crates.io-index"
 
-[registries.rsproxy]
-index = "https://rsproxy.cn/crates.io-index"
+# [source.rsproxy-sparse]
+# registry = "sparse+https://rsproxy.cn/index"
 
-# 清华大学
-[source.tuna]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+# [registries.rsproxy]
+# index = "https://rsproxy.cn/crates.io-index"
 
-# 中国科学技术大学
-[source.ustc]
-registry = "https://mirrors.ustc.edu.cn/crates.io-index/"
+# # 清华大学
+# [source.tuna]
+# registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 
-# 上海交通大学
-[source.sjtu]
-registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index"
+# # 中国科学技术大学
+# [source.ustc]
+# registry = "https://mirrors.ustc.edu.cn/crates.io-index/"
 
-# rustcc社区
-[source.rustcc]
-registry = "https://code.aliyun.com/rustcc/crates.io-index.git"
+# # 上海交通大学
+# [source.sjtu]
+# registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index"
 
-[net]
-git-fetch-with-cli = true
+# # rustcc社区
+# [source.rustcc]
+# registry = "https://code.aliyun.com/rustcc/crates.io-index.git"
+
+# [net]
+# git-fetch-with-cli = true
