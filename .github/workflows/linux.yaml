@@ -28,7 +28,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y libssl-dev
-          sudo apt install -y protobuf
+      
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v3
 
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
